@@ -1,0 +1,31 @@
+<h4>Formulaire de contact</h4>
+
+<label for="input-pseudo">Pseudo</label><br>
+<input type="text" id="input-pseudo" [ngClass]="{invalid: messageForm.pseudo.length > 20}" [(ngModel)]="messageForm.pseudo"><br>
+<p *ngIf="messageForm.pseudo.length > 20" class="invalid-info">champ invalide</p>
+
+
+<label for="input-sendto">Destinataire</label><br>
+<select name="sendto" id="input-sendto" [(ngModel)]="messageForm.destinataire">
+    <option value="-" disabled selected>- sélectionner le destinataire -</option>
+    <option [value]="desti" *ngFor="let desti of listDesti">{{ desti }}</option>
+</select ><br>
+
+<label for="input-message">Message</label><br>
+<textarea name="message" id="input-message" cols="30" rows="5" [(ngModel)]="messageForm.message"></textarea><br>
+
+<button class="btn btn-primary" (click)="onSend()" [disabled]="messageForm.pseudo.length > 20">envoyer</button>
+<button class="btn btn-danger" (click)="toggleShowMessages()">Afficher/Cacher</button>
+<br>
+
+<div *ngIf="showMessages">
+    <h5>Messages envoyés</h5>
+
+    <div class="card" *ngFor="let msg of sentMessage">
+        <div class="card-header">{{ msg.pseudo }}</div>
+        <div class="card-body">
+          <h5 class="card-title">à {{ msg.destinataire }} </h5>
+          <p class="card-text"> {{ msg.message }} </p>
+        </div>
+    </div>
+</div>
