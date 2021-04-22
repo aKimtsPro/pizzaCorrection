@@ -45,6 +45,8 @@ export class FormComponent implements OnInit {
       message: this.messageForm.message
     }
     this.sentMessage.push( toAdd );
+    alert("envoyé");
+    // redirection
   }
 
   toggleShowMessages(){
