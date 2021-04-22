@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Destinataire } from 'src/app/models/destinataire.model';
 import { Message } from 'src/app/models/message.model';
 import { Personne } from 'src/app/models/personne.model';
@@ -27,7 +28,7 @@ export class FormComponent implements OnInit {
 
   
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
 
@@ -45,8 +46,9 @@ export class FormComponent implements OnInit {
       message: this.messageForm.message
     }
     this.sentMessage.push( toAdd );
-    alert("envoyé");
-    // redirection
+    alert('envoyé');
+    console.log(this.sentMessage);
+    this.router.navigateByUrl('/accueil');
   }
 
   toggleShowMessages(){

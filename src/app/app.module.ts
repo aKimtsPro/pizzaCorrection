@@ -13,6 +13,8 @@ import { PizzaComponent } from './menu/pizza/pizza.component';
 import { ContactComponent } from './contact/contact.component';
 import { InfoComponent } from './contact/info/info.component';
 import { FormComponent } from './contact/form/form.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FormComponent } from './contact/form/form.component';
     PizzaComponent,
     ContactComponent,
     InfoComponent,
-    FormComponent
+    FormComponent,
+    NotFoundComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

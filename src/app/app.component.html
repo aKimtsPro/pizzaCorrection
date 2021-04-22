@@ -1,9 +1,12 @@
-<app-header></app-header>
 
-<main class="container">
-  <app-accueil></app-accueil>
-  <app-menu></app-menu>
-  <app-contact></app-contact>
-</main>
+<div id="page-container">
+  <app-header></app-header>
 
-<app-footer></app-footer>
+  <app-nav></app-nav>
+  
+  <main class="container">
+    <router-outlet></router-outlet>
+  </main>
+  
+  <app-footer></app-footer>
+</div>
