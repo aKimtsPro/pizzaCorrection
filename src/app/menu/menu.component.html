@@ -1,12 +1,16 @@
 <section>
     <h2>Les Menus</h2>
 
+    <div>
+        <app-panier [cmd]="listCommandes"></app-panier>
+    </div>
+
     <div class="row">
         <div class="col-6">
-            <app-pate></app-pate>
+            <app-pate (add)="onAdd( $event )"></app-pate>
         </div>
         <div class="col-6">
-            <app-pizza></app-pizza>
+            <app-pizza (add)="onAdd( $event )"></app-pizza>
         </div>
     </div>
 </section>

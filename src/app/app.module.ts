@@ -17,6 +17,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NavComponent } from './nav/nav.component';
 import { PlatFormatPipe } from './pipes/plat-format.pipe';
 import { FilterPlatPipe } from './pipes/filter-plat.pipe';
+import { PanierComponent } from './menu/panier/panier.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FilterPlatPipe } from './pipes/filter-plat.pipe';
     NotFoundComponent,
     NavComponent,
     PlatFormatPipe,
-    FilterPlatPipe
+    FilterPlatPipe,
+    PanierComponent
   ],
   imports: [
     BrowserModule,

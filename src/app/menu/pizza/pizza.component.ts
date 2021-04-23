@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Plat } from 'src/app/models/plat.model';
 
 @Component({
@@ -7,6 +7,9 @@ import { Plat } from 'src/app/models/plat.model';
   styleUrls: ['./pizza.component.css']
 })
 export class PizzaComponent implements OnInit {
+
+  @Output('add')
+  addEvent = new EventEmitter<Plat>();
 
   prixMax: number;
 
@@ -36,6 +39,10 @@ export class PizzaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onAdd( plat: Plat ){
+    this.addEvent.emit( plat );
   }
 
 }

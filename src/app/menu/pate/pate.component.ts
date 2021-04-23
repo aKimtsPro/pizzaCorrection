@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Plat } from 'src/app/models/plat.model';
 
 @Component({
   selector: 'app-pate',
@@ -7,12 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PateComponent implements OnInit {
 
-  listPate: string[] = [
-    'pâte pesto',
-    'pâte carbonnara',
-    'pâte bolognèse',
-    'pâte arabiata',
-    "pâte à l'encre de seiche"
+  @Output('add')
+  addEvent = new EventEmitter<Plat>();
+
+  listPate: Plat[] = [
+    { nom: 'pâte pesto', prix: 5 },
+    { nom: 'pâte carbonnara', prix: 6 },
+    { nom: 'pâte bolognèse', prix: 4 },
+    { nom: 'pâte arabiata', prix: 4.5 },
+    { nom: "pâte à l'encre de seiche", prix: 8 }
   ]
 
   constructor() { }
@@ -20,4 +24,7 @@ export class PateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onAdd( plat: Plat ) {
+    this.addEvent.emit( plat );
+  }
 }

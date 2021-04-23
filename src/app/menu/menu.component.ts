@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Plat } from '../models/plat.model';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  listCommandes: Plat[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onAdd( plat: Plat ){
+    this.listCommandes.push( plat );
   }
 
 }

@@ -2,6 +2,9 @@
 
 <input type="number" placeholder="prix max" min="0" [(ngModel)]="prixMax">
 
-<ul>
-    <li *ngFor="let pizza of pizzaList | filterPlat:prixMax"> {{ pizza | platFormat }} </li>
+<ul class="menu-list">
+    <li *ngFor="let pizza of pizzaList | filterPlat:prixMax"> 
+        {{ pizza | platFormat }}
+        <button class="btn btn-success" (click)="onAdd( pizza )">ajouter au panier</button> 
+    </li>
 </ul>

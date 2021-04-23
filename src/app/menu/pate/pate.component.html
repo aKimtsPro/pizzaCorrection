@@ -1,5 +1,8 @@
 <h3>Menu pâte</h3>
 
-<ul>
-    <li *ngFor="let pate of listPate"> {{ pate }} </li>
+<ul class="menu-list">
+    <li *ngFor="let pate of listPate"> 
+        {{ pate | platFormat }}  
+        <button class="btn btn-success" (click)="onAdd( pate )">ajouter au panier</button>
+    </li>
 </ul>
