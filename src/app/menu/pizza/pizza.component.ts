@@ -8,6 +8,8 @@ import { Plat } from 'src/app/models/plat.model';
 })
 export class PizzaComponent implements OnInit {
 
+  prixMax: number;
+
   pizzaList: Plat[] = [
     {
       nom:'pizza 4 fromages',

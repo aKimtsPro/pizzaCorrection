@@ -15,6 +15,8 @@ import { InfoComponent } from './contact/info/info.component';
 import { FormComponent } from './contact/form/form.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NavComponent } from './nav/nav.component';
+import { PlatFormatPipe } from './pipes/plat-format.pipe';
+import { FilterPlatPipe } from './pipes/filter-plat.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { NavComponent } from './nav/nav.component';
     InfoComponent,
     FormComponent,
     NotFoundComponent,
-    NavComponent
+    NavComponent,
+    PlatFormatPipe,
+    FilterPlatPipe
   ],
   imports: [
     BrowserModule,
