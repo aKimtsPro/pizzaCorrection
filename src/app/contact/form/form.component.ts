@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Destinataire } from 'src/app/models/destinataire.model';
 import { Message } from 'src/app/models/message.model';
@@ -15,20 +16,23 @@ export class FormComponent implements OnInit {
     'cuistot',
     'serveur',
     'propriétaire'
-  ] 
-
-  messageForm: Message = {
-    pseudo: '',
-    destinataire: '-',
-    message: ''
-  };
+  ]
 
   sentMessage: Message[] = [];
   showMessages: boolean = false;
 
-  
+  form: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(builder: FormBuilder) {
+    this.form = builder.group(
+      {
+        'pseudo': new FormControl(null, [Validators.required, Validators.minLength(5), Validators.maxLength(50)]),
+        'email': new FormControl(null, Validators.email),
+        'destinataire': new FormControl(null, Validators.required),
+        'message': new FormControl(null, [Validators.required, Validators.maxLength(50)])
+      }
+    )
+  }
 
   ngOnInit(): void {
 
@@ -40,15 +44,17 @@ export class FormComponent implements OnInit {
   }
 
   onSend(){
-    const toAdd = {
-      pseudo: this.messageForm.pseudo,
-      destinataire: this.messageForm.destinataire,
-      message: this.messageForm.message
+    if ( this.form.valid ){
+      const toAdd = {
+        pseudo: this.form.value.pseudo,
+        email: this.form.value.email,
+        destinataire: this.form.value.destinataire,
+        message: this.form.value.message
+      }
+      this.sentMessage.push( toAdd );
+      this.form.reset()
     }
-    this.sentMessage.push( toAdd );
-    alert('envoyé');
-    console.log(this.sentMessage);
-    this.router.navigateByUrl('/accueil');
+    
   }
 
   toggleShowMessages(){

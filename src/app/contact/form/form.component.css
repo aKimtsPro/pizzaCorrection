@@ -1,7 +1,19 @@
-.invalid {
+form .ng-dirty.ng-invalid {
     border: 3px solid red;
+}
+
+form .ng-pristine {
+    background-color: rgb(189, 228, 255);
 }
 
 .invalid-info{
     color: red;
+}
+
+form{
+    padding: 20px;
+}
+
+form.ng-untouched{
+    background-color: rgb(173, 153, 114);
 }

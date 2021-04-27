@@ -1,22 +1,29 @@
 <h4>Formulaire de contact</h4>
 
-<label for="input-pseudo">Pseudo</label><br>
-<input type="text" id="input-pseudo" [ngClass]="{invalid: messageForm.pseudo.length > 20}" [(ngModel)]="messageForm.pseudo"><br>
-<p *ngIf="messageForm.pseudo.length > 20" class="invalid-info">champ invalide</p>
 
 
-<label for="input-sendto">Destinataire</label><br>
-<select name="sendto" id="input-sendto" [(ngModel)]="messageForm.destinataire">
-    <option value="-" disabled selected>- sélectionner le destinataire -</option>
-    <option [value]="desti" *ngFor="let desti of listDesti">{{ desti }}</option>
-</select ><br>
+<form [formGroup]="form" (ngSubmit)="onSend()">
+    <label for="input-pseudo">Pseudo</label><br>
+    <input type="text" id="input-pseudo" formControlName="pseudo"><br>
+    <p *ngIf="form.controls.pseudo.invalid && form.controls.pseudo.dirty" class="invalid-info">champ invalide</p>
 
-<label for="input-message">Message</label><br>
-<textarea name="message" id="input-message" cols="30" rows="5" [(ngModel)]="messageForm.message"></textarea><br>
+    <label for="input-email">Email</label><br>
+    <input type="email" id="input-email" formControlName="email"><br>
 
-<button class="btn btn-primary" (click)="onSend()" [disabled]="messageForm.pseudo.length > 20">envoyer</button>
-<button class="btn btn-danger" (click)="toggleShowMessages()">Afficher/Cacher</button>
-<br>
+    <label for="input-sendto">Destinataire</label><br>
+    <select name="sendto" id="input-sendto" formControlName="destinataire" placeholder="-selectionner un destinataire-">
+        <option [value]="desti" *ngFor="let desti of listDesti">{{ desti }}</option>
+    </select ><br>
+
+    <label for="input-message">Message</label><br>
+    <textarea name="message" id="input-message" cols="30" rows="5" formControlName="message"></textarea><br>
+
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">envoyer</button>
+    <button class="btn btn-danger" (click)="toggleShowMessages()">Afficher/Cacher</button>
+    <br>
+
+</form>
+
 
 <div *ngIf="showMessages">
     <h5>Messages envoyés</h5>
